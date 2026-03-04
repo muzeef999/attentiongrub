@@ -4,15 +4,27 @@
   "workspaces": [
     "gateway",
     "services/*",
+    "services/integration-services/*",
     "shared"
   ],
+  
+
   "scripts": {
     "dev:gateway": "npm run dev -w gateway",
     "dev:profile": "npm run dev -w profile-service",
     "dev:agent": "npm run dev -w agent-service",
-    "dev:integration": "npm run dev -w integration-service"
+    "dev:facebook": "npm run dev -w facebook",
+    "dev:google": "npm run dev -w google",
+    "dev:linkedin": "npm run dev -w linkedin",
+
+    "dev:backend": "concurrently \"npm run dev:gateway\" \"npm run dev:profile\" \"npm run dev:agent\" \"npm run dev:facebook\" \"npm run dev:google\" \"npm run dev:linkedin\""
   },
+
+
+
+
   "devDependencies": {
+    "concurrently": "^9.2.1",
     "typescript": "^5.9.3"
   }
 }
